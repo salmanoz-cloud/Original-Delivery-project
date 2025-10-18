@@ -50,3 +50,26 @@
 - יצירת קובץ `.gitignore` ו-`README.md`.
 - אתחול Git בתיקיית הפרויקט עם קומיט ראשוני.
 - הפרויקט מוכן להתחלת פיתוח מודל הנתונים ב-Firestore.
+
+
+
+### פיתוח מודל הנתונים ב-Firestore
+**תוכן השיחה:** המשתמש אישר להתחיל בפיתוח מודל הנתונים ב-Firestore.
+
+**פעולות שבוצעו:**
+- יצירת `firestore.rules` עם כללי אבטחה מלאים ל-Firestore.
+- יצירת `storage.rules` עם כללי אבטחה ל-Firebase Storage.
+- יצירת `FIRESTORE_SCHEMA.md` עם תיעוד מפורט של 7 Collections עיקריות.
+- יצירת `firestoreService.js` עם שירות Firebase לניהול פעולות בסיסיות.
+- המשתמש התקל בבעיה בהפעלת Storage ב-Firebase Console. החלטנו להמשיך ללא Storage לעת עתה.
+
+### הקמת מערכת אימות משתמשים (Authentication)
+**תוכן השיחה:** המשתמש אישר להתחיל בפיתוח מערכת אימות משתמשים.
+
+**פעולות שבוצעו:**
+- יצירת `authService.js` עם פונקציות אימות (הרשמה, התחברות, Google Login, איפוס סיסמה).
+- יצירת `LoginPage.js` עם ממשק התחברות.
+- יצירת `RegisterPage.js` עם ממשק הרשמה.
+- יצירת דשבורדים זמניים: `CustomerDashboard.js`, `AdminDashboard.js`, `CourierDashboard.js`.
+- יצירת קבצי CSS: `Auth.css` ו-`Dashboard.css`.
+- כל הקבצים נשמרו ב-Git עם קומיט מתאים.
