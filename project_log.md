@@ -206,3 +206,34 @@
 **הערות:**
 - Storage עדיין לא מוגדר בגלל הגבלות אזורי Firebase. זה לא משפיע על הפונקציונליות הבסיסית.
 - הפרויקט מוכן לבדיקה בסיסית.
+
+
+
+### בדיקות ופריסה ראשונית
+**תוכן השיחה:** המשתמש אישר להמשיך בבדיקות ופריסה.
+
+**פעולות שבוצעו:**
+- הפעלת שרת פיתוח React - האפליקציה מרכיבה בהצלחה ב-http://localhost:3000.
+- בדיקת עמוד ההתחברות - כל הרכיבים UI נטענו כראוי (שדות אימייל, סיסמה, כפתורים).
+- תיקון אזהרות ESLint בקבצים שונים:
+  - TasksList.js - תיקון dependency array בـ useEffect.
+  - PerformanceStats.js - תיקון dependency array בـ useEffect.
+  - TaskDetails.js - הוספת שימוש ב-proofFile.
+  - authService.js - הסרת imports שלא בשימוש.
+  - firestoreService.js - הסרת imports שלא בשימוש.
+- יצירת קבצי תצורה Firebase:
+  - firebase.json - הגדרות Hosting, Firestore, Storage, Functions.
+  - firestore.indexes.json - אינדקסים מומלצים לשאילתות.
+  - .env.example - תבנית למשתנים סביבה.
+- יצירת .env.local עם פרטי Firebase (API Key, Project ID, וכו').
+
+**תוצאות בדיקה:**
+- ✅ שרת פיתוח פעיל ב-http://localhost:3000
+- ✅ האפליקציה מרכיבה בהצלחה
+- ✅ עמוד ההתחברות נטען כראוי
+- ✅ כל הרכיבים UI נראים נכונים
+- ✅ אזהרות ESLint תוקנו
+
+**הערות:**
+- Cloud Functions עדיין לא הועלו ל-Firebase.
+- Storage עדיין לא מוגדר בגלל הגבלות אזורי Firebase.
