@@ -73,3 +73,42 @@
 - יצירת דשבורדים זמניים: `CustomerDashboard.js`, `AdminDashboard.js`, `CourierDashboard.js`.
 - יצירת קבצי CSS: `Auth.css` ו-`Dashboard.css`.
 - כל הקבצים נשמרו ב-Git עם קומיט מתאים.
+
+
+
+### פיתוח Cloud Functions ללוגיקה עסקית ואינטגרציות
+**תוכן השיחה:** המשתמש אישר להתחיל בפיתוח Cloud Functions.
+
+**פעולות שבוצעו:**
+- יצירת תיקיית `functions` עם npm project.
+- יצירת `index.js` ראשי עם Cloud Functions עיקריות:
+  - `onPackageStatusChange` - שליחת התראות כשמשתנה סטטוס חבילה.
+  - `sendPaymentReminder` - שליחת תזכורות תשלום (מתוזמן).
+  - `extractPackageFromWhatsApp` - חילוץ פרטי חבילה מ-WhatsApp.
+  - `extractPackageFromImage` - חילוץ פרטי חבילה מתמונה (OCR).
+  - `processSubscriptionPayment` - עיבוד תשלום.
+  - `createCourierAndNotify` - יצירת חשבון שליח.
+- יצירת `notifications.js` עם שירות התראות (WhatsApp, Email, Push).
+- יצירת `packageExtraction.js` עם חילוץ פרטים באמצעות Gemini AI.
+- יצירת `payments.js` עם ניהול תשלומים ומנויים.
+- יצירת `couriers.js` עם ניהול שליחים.
+- יצירת `.env.example` עם משתנים סביבה נדרשים.
+
+### פיתוח אפליקציית הלקוחות (Customer Dashboard)
+**תוכן השיחה:** המשתמש אישר להתחיל בפיתוח אפליקציית הלקוחות.
+
+**פעולות שבוצעו:**
+- יצירת `AddPackageModal.js` - קומפוננטה להוספת חבילה עם 3 אפשרויות (הזנה ידנית, טקסט, תמונה).
+- יצירת `AddFamilyMemberModal.js` - קומפוננטה להוספת בן משפחה.
+- יצירת `PackagesList.js` - קומפוננטה להצגת רשימת חבילות עם סינון.
+- יצירת `SubscriptionCard.js` - קומפוננטה להצגת מנוי וחבילות זמינות.
+- עדכון `CustomerDashboard.js` עם כל התכונות:
+  - כפתורים לפעולות מהירות (הוסף חבילה, בן משפחה, קריאת שירות, מסלול פריט).
+  - רשימת חבילות עם סינון.
+  - כרטיס מנוי עם התקדמות.
+  - פרטי חשבון.
+- יצירת קבצי CSS:
+  - `CustomerDashboard.css` - עיצוב דשבורד לקוח.
+  - `Modal.css` - עיצוב מודלים.
+  - `PackagesList.css` - עיצוב רשימת חבילות.
+  - `SubscriptionCard.css` - עיצוב כרטיס מנוי.
