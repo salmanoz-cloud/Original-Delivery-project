@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* Subscription Card Specific Styles */
 .subscription-card {
     /* Inherits card styles from Dashboard.css */
@@ -79,31 +78,5 @@
 .service-package-option .button {
     padding: 8px 15px;
     font-size: 0.9rem;
-=======
-.subscription-card {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.subscription-card h2 {
-  color: #007bff;
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.subscription-card p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.subscription-card .button {
-  margin-top: 20px;
-  padding: 10px 25px;
-  font-size: 16px;
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 

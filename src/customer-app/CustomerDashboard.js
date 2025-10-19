@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { getPackagesByUserId, getFamilyMembers, getSubscriptionByUserId, updatePackageStatus } from '../services/firestoreService';
+import { getPackages, getFamilyMembers, getSubscriptionByUserId, updatePackageStatus } from '../services/firestoreService';
 import AddPackageModal from '../components/AddPackageModal';
 import AddFamilyMemberModal from '../components/AddFamilyMemberModal';
 import PackagesList from '../components/PackagesList';
@@ -17,6 +17,34 @@ function CustomerDashboard() {
   const [isAddPackageModalOpen, setIsAddPackageModalOpen] = useState(false);
   const [isAddFamilyMemberModalOpen, setIsAddFamilyMemberModalOpen] = useState(false);
 
+  const fetchCustomerData = useCallback(async () => {
+    if (!user) return;
+
+    const userPackagesResult = await getPackages(user.uid, null);
+    if (userPackagesResult.success) {
+      setPackages(userPackagesResult.data);
+    } else {
+      console.error("Error fetching packages:", userPackagesResult.error);
+      setPackages([]);
+    }
+
+    const userFamilyMembersResult = await getFamilyMembers(user.uid);
+    if (userFamilyMembersResult.success) {
+      setFamilyMembers(userFamilyMembersResult.data);
+    } else {
+      console.error("Error fetching family members:", userFamilyMembersResult.error);
+      setFamilyMembers([]);
+    }
+
+    const userSubscriptionResult = await getSubscriptionByUserId(user.uid);
+    if (userSubscriptionResult.success) {
+      setSubscription(userSubscriptionResult.data);
+    } else {
+      console.error("Error fetching subscription:", userSubscriptionResult.error);
+      setSubscription(null);
+    }
+  }, [user]);
+
   useEffect(() => {
     if (!loading && (!user || userRole !== 'customer')) {
       navigate('/login');
@@ -25,18 +53,7 @@ function CustomerDashboard() {
     if (user) {
       fetchCustomerData();
     }
-  }, [user, userRole, loading, navigate]);
-
-  const fetchCustomerData = async () => {
-    const userPackages = await getPackagesByUserId(user.uid);
-    setPackages(userPackages);
-
-    const userFamilyMembers = await getFamilyMembers(user.uid);
-    setFamilyMembers(userFamilyMembers);
-
-    const userSubscription = await getSubscriptionByUserId(user.uid);
-    setSubscription(userSubscription);
-  };
+  }, [user, userRole, loading, navigate, fetchCustomerData]);
 
   const handleUpdatePackageStatus = async (packageId, newStatus) => {
     await updatePackageStatus(packageId, newStatus);

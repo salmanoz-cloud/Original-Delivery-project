@@ -415,3 +415,40 @@
 4. תיקונים ושיפורים
 5. פרסום בחנויות אפליקציות
 
+
+
+### 1️⃣2️⃣ שלב תיקון בעיות באפליקציית לקוח
+
+**תאריך:** 2025-10-19 05:25 GMT+3
+
+**תיאור הבעיה:**
+- לוח המחוונים של אפליקציית הלקוח נטען חלקית, מציג תוכן סטטי בלבד.
+- שגיאה בקונסולת הדפדפן: `Error while trying to use the following icon from the Manifest: https://customer-delivery-app-d0fa1.web.app/logo192.png (Download error or resource isn't a valid image)`.
+- תוכן דינמי (חבילות, בני משפחה, מנויים) אינו מוצג.
+- שגיאת `EMFILE: too many open files` מונעת הרצת האפליקציה במצב פיתוח.
+
+**פעולות שבוצעו:**
+- **פתרון קונפליקטים ב-Git:** נפתרו קונפליקטים בקבצים `Modal.css`, `AddPackageModal.js`, `PackagesList.js`, `SubscriptionCard.js`, `PackagesList.css`, `SubscriptionCard.css`, `firebaseConfig.js`, `authService.js`, `firestoreService.js`.
+- **תיקון `getUserRole` ב-`authService.js`:** הפונקציה `getUserRole` נוספה בחזרה ויוצאה כהלכה.
+- **תיקון `addFamilyMember` ב-`firestoreService.js`:** הפונקציה `addFamilyMember` תוקנה ויוצאה כהלכה.
+- **תיקון `getPackages` ב-`firestoreService.js`:** הפונקציה `getPackagesByUserId` שונתה ל-`getPackages` כדי להתאים לשינויים בקוד.
+- **תיקון `getSubscriptionByFamilyId` ב-`firestoreService.js`:** הפונקציה תוקנה ויוצאה כהלכה.
+- **ניקוי מטמון npm והתקנה מחדש:** בוצע `npm cache clean --force` ולאחר מכן מחיקה של `node_modules` ו-`package-lock.json` והתקנה מחדש של התלויות.
+- **התקנת `react-scripts`:** הותקן `react-scripts` במפורש כתלות פיתוח.
+- **הגדרת משתני סביבה של Firebase:** משתני הסביבה (`REACT_APP_FIREBASE_API_KEY`, `REACT_APP_FIREBASE_AUTH_DOMAIN`, וכו‍‍') הוגדרו עבור הפרויקט.
+- **עדכון `firebase.json`:** נתיב ה-`public` עבור `customer-app` עודכן ל-`customer-app/build`.
+- **פריסת כללי אבטחה של Firestore:** כללי האבטחה של Firestore הועלו ל-Firebase.
+- **תיקון `AddFamilyMemberModal.js`:** שונתה פונקציית הוספת בן משפחה כך שתדרוש רק שם וטלפון, ותוקנה אתחול `formData`.
+- **תיקון `CustomerDashboard.js`:** פונקציית `fetchCustomerData` עוטפה ב-`useCallback` ותוקנו קריאות ה-API ל-`getFamilyMembers` ו-`getSubscriptionByUserId` כדי לטפל בתגובות `success` ו-`error`.
+- **ניקוי מטמון דפדפן:** בוצע ניקוי יסודי של מטמון הדפדפן ונתוני האתר.
+- **התקנת `watchman`:** הותקן `watchman` בניסיון לפתור את שגיאת ה-`EMFILE`.
+
+**סטטוס נוכחי:**
+- אפליקציית הלקוח נבנית ונפרסת בהצלחה ל-Firebase Hosting.
+- שגיאת `EMFILE: too many open files` עדיין מונעת הרצת האפליקציה במצב פיתוח.
+- שגיאת `logo192.png` עדיין מופיעה בקונסולת הדפדפן של האפליקציה הפרוסה.
+- תוכן דינמי עדיין אינו נטען בלוח המחוונים של הלקוח.
+
+**הערות:**
+- הבעיה נמשכת למרות התיקונים הרבים והפריסות החוזרות. נראה שהבעיה מורכבת ודורשת בדיקה מעמיקה יותר של הקוד והתשתיות, שאותה איני יכול לבצע באופן מלא בסביבה הנוכחית. יש לוודא שהמשתמש מאומת ובעל הרשאות מתאימות ב-Firestore, ושהקריאות ל-API מטופלות כראוי.
+

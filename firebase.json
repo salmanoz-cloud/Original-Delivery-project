@@ -32,7 +32,7 @@
     },
     {
       "target": "courier-app",
-      "public": "courier-app/build",
+     "public": "courier-app/build",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -50,6 +50,9 @@
     "source": "functions",
     "runtime": "nodejs20"
   },
+  "firestore": {
+      "rules": "firestore.rules"
+    },
   "storage": {
     "rules": "storage.rules"
   }

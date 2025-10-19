@@ -1,36 +1,23 @@
-<<<<<<< HEAD
 /* Auth Page Styles */
-=======
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #f0f2f5;
-<<<<<<< HEAD
   padding: 20px;
-=======
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
 .auth-card {
   background-color: white;
-<<<<<<< HEAD
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-=======
-  padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
+  padding: 40px;
   width: 100%;
   max-width: 400px;
   text-align: center;
 }
 
-<<<<<<< HEAD
 .auth-card h1 {
   color: #333;
   margin-bottom: 10px;
@@ -47,27 +34,22 @@
   color: #666;
   margin-bottom: 20px;
   font-size: 1rem;
-=======
+}
+
 .auth-card h2 {
   margin-bottom: 25px;
   color: #333;
   font-size: 28px;
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
 .form-group {
   margin-bottom: 20px;
-<<<<<<< HEAD
   text-align: right;
-=======
-  text-align: left;
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
 .form-group label {
   display: block;
   margin-bottom: 8px;
-<<<<<<< HEAD
   color: #333;
   font-weight: bold;
 }
@@ -85,43 +67,6 @@
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.auth-divider {
-  margin: 25px 0;
-  font-size: 0.9rem;
-  color: #aaa;
-  position: relative;
-}
-
-.auth-divider::before,
-.auth-divider::after {
-  content: ";
-  position: absolute;
-  top: 50%;
-  width: 40%;
-  height: 1px;
-  background-color: #eee;
-}
-
-.auth-divider::before {
-  right: 0;
-}
-
-.auth-divider::after {
-  left: 0;
-}
-
-.auth-footer {
-  margin-top: 30px;
-  font-size: 0.9rem;
-}
-
-.auth-footer a,
-.auth-footer .link-button {
-=======
-  font-weight: bold;
-  color: #555;
 }
 
 .form-group input[type="email"],
@@ -188,19 +133,13 @@
 
 .auth-link a,
 .link-button {
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   color: #007bff;
   text-decoration: none;
   font-weight: bold;
 }
 
-<<<<<<< HEAD
 .auth-footer a:hover,
-.auth-footer .link-button:hover {
-  text-decoration: underline;
-}
-
-=======
+.auth-footer .link-button:hover,
 .auth-link a:hover,
 .link-button:hover {
   text-decoration: underline;
@@ -215,5 +154,3 @@
   margin-bottom: 15px;
   font-size: 14px;
 }
-
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)

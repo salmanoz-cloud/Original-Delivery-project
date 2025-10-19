@@ -1,9 +1,11 @@
-<<<<<<< HEAD
 /* Customer Dashboard Specific Styles */
 .customer-dashboard {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .customer-dashboard .dashboard-container {
@@ -19,11 +21,6 @@
   .customer-dashboard .dashboard-grid {
     grid-template-columns: 1fr;
   }
-=======
-.customer-dashboard {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .customer-dashboard h1 {
@@ -34,6 +31,5 @@
 .customer-dashboard button {
   margin-right: 10px;
   margin-bottom: 20px;
->>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
