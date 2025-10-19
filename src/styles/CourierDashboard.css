@@ -1,0 +1,36 @@
+/* Courier Dashboard Specific Styles */
+.courier-dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.courier-dashboard .dashboard-container {
+  flex-grow: 1;
+}
+
+.courier-dashboard .dashboard-grid {
+  grid-template-columns: 1.5fr 1fr; /* Tasks list slightly wider than stats */
+}
+
+@media (max-width: 768px) {
+  .courier-dashboard .dashboard-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}
+
+/* Tasks List */
+.tasks-list {
+  /* Add specific styles for tasks list if needed */
+}
+
+/* Task Details Modal (if used here) */
+.task-details-modal {
+  /* Add specific styles for task details modal if needed */
+}
+
+/* Performance Stats */
+.performance-stats {
+  /* Add specific styles for performance stats if needed */
+}
+
