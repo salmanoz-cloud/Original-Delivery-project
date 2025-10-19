@@ -376,7 +376,7 @@
 
 **תיאור הבעיה:**
 - לוח המחוונים של אפליקציית הלקוח נטען חלקית, מציג תוכן סטטי בלבד.
-- שגיאה בקונסולת הדפדפן: `Error while trying to use the following icon from the Manifest: https://customer-delivery-app-d0fa1.web.app/logo192.png (Download error or resource isn't a valid image)`.
+- שגיאה בקונסולת הדפדפן: `Error while trying to use the following icon from the Manifest: https://customer-delivery-app-d0fa1.web.app/logo192.png (Download error or resource isn\'t a valid image)`.
 - תוכן דינמי (חבילות, בני משפחה, מנויים) אינו מוצג.
 - שגיאת `EMFILE: too many open files` מונעת הרצת האפליקציה במצב פיתוח.
 
