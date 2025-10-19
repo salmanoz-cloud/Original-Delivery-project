@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { getSubscriptionByFamilyId, getServicePackages } from '../services/firestoreService';
 import '../styles/SubscriptionCard.css';
@@ -80,9 +81,35 @@ function SubscriptionCard({ familyId, onUpgrade }) {
           </div>
         ))}
       </div>
+=======
+import React from 'react';
+import '../styles/SubscriptionCard.css';
+
+function SubscriptionCard({ subscription }) {
+  if (!subscription) {
+    return (
+      <div className="subscription-card">
+        <h2>Subscription</h2>
+        <p>No active subscription found.</p>
+        <button className="button button-primary">Choose a Plan</button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="subscription-card">
+      <h2>My Subscription</h2>
+      <p>Plan: {subscription.servicePackageId}</p>
+      <p>Packages Left: {subscription.packagesLeft}</p>
+      <p>Status: {subscription.status}</p>
+      <button className="button button-secondary">Manage Subscription</button>
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     </div>
   );
 }
 
 export default SubscriptionCard;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

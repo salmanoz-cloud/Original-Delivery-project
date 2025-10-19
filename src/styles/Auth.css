@@ -1,23 +1,36 @@
+<<<<<<< HEAD
 /* Auth Page Styles */
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #f0f2f5;
+<<<<<<< HEAD
   padding: 20px;
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
 .auth-card {
   background-color: white;
+<<<<<<< HEAD
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 40px;
+=======
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   width: 100%;
   max-width: 400px;
   text-align: center;
 }
 
+<<<<<<< HEAD
 .auth-card h1 {
   color: #333;
   margin-bottom: 10px;
@@ -34,16 +47,27 @@
   color: #666;
   margin-bottom: 20px;
   font-size: 1rem;
+=======
+.auth-card h2 {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 28px;
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
 .form-group {
   margin-bottom: 20px;
+<<<<<<< HEAD
   text-align: right;
+=======
+  text-align: left;
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
 .form-group label {
   display: block;
   margin-bottom: 8px;
+<<<<<<< HEAD
   color: #333;
   font-weight: bold;
 }
@@ -95,13 +119,101 @@
 
 .auth-footer a,
 .auth-footer .link-button {
+=======
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+}
+
+.button-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.button-primary:hover {
+  background-color: #0056b3;
+}
+
+.button-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.button-secondary:hover {
+  background-color: #5a6268;
+}
+
+.google-button {
+  background-color: #db4437;
+  margin-top: 15px;
+}
+
+.google-button:hover {
+  background-color: #c33d2e;
+}
+
+.auth-link {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #666;
+}
+
+.auth-link a,
+.link-button {
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   color: #007bff;
   text-decoration: none;
   font-weight: bold;
 }
 
+<<<<<<< HEAD
 .auth-footer a:hover,
 .auth-footer .link-button:hover {
   text-decoration: underline;
 }
 
+=======
+.auth-link a:hover,
+.link-button:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

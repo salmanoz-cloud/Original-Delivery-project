@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import '../../styles/courier/PerformanceStats.css';
 
@@ -45,6 +46,65 @@ function PerformanceStats({ courierId }) {
         </div>
         <p>{mockStats.todayProgress} מתוך {mockStats.totalToday} משימות הושלמו</p>
       </div>
+=======
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
+import { getCourierPerformanceStats } from '../../services/firestoreService';
+import '../../styles/courier/PerformanceStats.css';
+
+function PerformanceStats() {
+  const { user } = useAuth();
+  const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      fetchStats();
+    }
+  }, [user]);
+
+  const fetchStats = async () => {
+    setLoading(true);
+    try {
+      const courierStats = await getCourierPerformanceStats(user.uid);
+      setStats(courierStats);
+    } catch (err) {
+      setError('Failed to fetch performance stats: ' + err.message);
+    }
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <div>Loading performance stats...</div>;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
+
+  return (
+    <div className="performance-stats">
+      <h2>Performance Statistics</h2>
+      {stats ? (
+        <div className="stats-grid">
+          <div className="stat-card">
+            <h3>Delivered Packages</h3>
+            <p>{stats.deliveredPackages}</p>
+          </div>
+          <div className="stat-card">
+            <h3>Total Packages</h3>
+            <p>{stats.totalPackages}</p>
+          </div>
+          <div className="stat-card">
+            <h3>Delivery Rate</h3>
+            <p>{stats.deliveryRate.toFixed(2)}%</p>
+          </div>
+        </div>
+      ) : (
+        <p>No performance data available.</p>
+      )}
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     </div>
   );
 }

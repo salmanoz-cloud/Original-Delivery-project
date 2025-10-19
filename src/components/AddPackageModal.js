@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addPackage } from '../services/firestoreService';
+<<<<<<< HEAD
 import { getCurrentUser } from '../services/authService';
 import '../styles/Modal.css';
 
@@ -85,6 +86,44 @@ function AddPackageModal({ isOpen, onClose, customerId, submittedBy, onPackageAd
       setError('שגיאה בהוספת חבילה: ' + err.message);
     }
 
+=======
+import { useAuth } from '../contexts/AuthContext';
+import '../styles/Modal.css';
+
+function AddPackageModal({ isOpen, onClose, onPackageAdded }) {
+  const { user } = useAuth();
+  const [trackingNumber, setTrackingNumber] = useState('');
+  const [description, setDescription] = useState('');
+  const [status, setStatus] = useState('pending');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    if (!user) {
+      setError('User not authenticated.');
+      setLoading(false);
+      return;
+    }
+    try {
+      await addPackage({
+        userId: user.uid,
+        trackingNumber,
+        description,
+        status,
+        // Add other package details as needed
+      });
+      onPackageAdded();
+      onClose();
+      setTrackingNumber('');
+      setDescription('');
+      setStatus('pending');
+    } catch (err) {
+      setError('Failed to add package: ' + err.message);
+    }
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     setLoading(false);
   };
 
@@ -93,6 +132,7 @@ function AddPackageModal({ isOpen, onClose, customerId, submittedBy, onPackageAd
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+<<<<<<< HEAD
         <h2>הוסף חבילה חדשה</h2>
         <button className="modal-close-button" onClick={onClose}>&times;</button>
 
@@ -213,6 +253,42 @@ function AddPackageModal({ isOpen, onClose, customerId, submittedBy, onPackageAd
           <button type="submit" className="button button-primary" disabled={loading}>
             {loading ? 'מוסיף...' : 'הוסף חבילה'}
           </button>
+=======
+        <h2>Add New Package</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Tracking Number:</label>
+            <input
+              type="text"
+              value={trackingNumber}
+              onChange={(e) => setTrackingNumber(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Description:</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <label>Status:</label>
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              <option value="pending">Pending</option>
+              <option value="in-transit">In Transit</option>
+              <option value="delivered">Delivered</option>
+              <option value="exception">Exception</option>
+            </select>
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <div className="modal-actions">
+            <button type="submit" className="button button-primary" disabled={loading}>{
+              loading ? 'Adding...' : 'Add Package'
+            }</button>
+            <button type="button" className="button button-secondary" onClick={onClose}>Cancel</button>
+          </div>
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
         </form>
       </div>
     </div>
@@ -220,4 +296,7 @@ function AddPackageModal({ isOpen, onClose, customerId, submittedBy, onPackageAd
 }
 
 export default AddPackageModal;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

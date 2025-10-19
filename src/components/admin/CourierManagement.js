@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { collection, query, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth'; // Import for creating auth user
 import { auth } from '../../firebaseConfig'; // Import auth instance
+=======
+import { getAllUsers, suspendUser, activateUser, deleteUserProfile } from '../../services/firestoreService';
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 import '../../styles/admin/CourierManagement.css';
 
 function CourierManagement() {
   const [couriers, setCouriers] = useState([]);
   const [loading, setLoading] = useState(true);
+<<<<<<< HEAD
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [newCourier, setNewCourier] = useState({
@@ -16,6 +21,10 @@ function CourierManagement() {
     password: '',
     phoneNumber: '',
   });
+=======
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 
   useEffect(() => {
     fetchCouriers();
@@ -23,6 +32,7 @@ function CourierManagement() {
 
   const fetchCouriers = async () => {
     setLoading(true);
+<<<<<<< HEAD
     setError('');
     try {
       const q = query(collection(db, 'users'));
@@ -31,10 +41,19 @@ function CourierManagement() {
       setCouriers(courierList.filter(user => user.role === 'courier'));
     } catch (err) {
       setError('שגיאה בטעינת שליחים: ' + err.message);
+=======
+    try {
+      const allUsers = await getAllUsers();
+      const courierUsers = allUsers.filter(user => user.role === 'courier');
+      setCouriers(courierUsers);
+    } catch (err) {
+      setError('Failed to fetch couriers: ' + err.message);
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     }
     setLoading(false);
   };
 
+<<<<<<< HEAD
   const handleNewCourierChange = (e) => {
     const { name, value } = e.target;
     setNewCourier(prev => ({ ...prev, [name]: value }));
@@ -89,25 +108,64 @@ function CourierManagement() {
         fetchCouriers(); // Refresh the list
       } catch (err) {
         setError('שגיאה במחיקת שליח: ' + err.message);
+=======
+  const handleSuspend = async (courierId) => {
+    try {
+      await suspendUser(courierId);
+      fetchCouriers();
+    } catch (err) {
+      setError('Failed to suspend courier: ' + err.message);
+    }
+  };
+
+  const handleActivate = async (courierId) => {
+    try {
+      await activateUser(courierId);
+      fetchCouriers();
+    } catch (err) {
+      setError('Failed to activate courier: ' + err.message);
+    }
+  };
+
+  const handleDelete = async (courierId) => {
+    if (window.confirm('Are you sure you want to delete this courier?')) {
+      try {
+        await deleteUserProfile(courierId);
+        fetchCouriers();
+      } catch (err) {
+        setError('Failed to delete courier: ' + err.message);
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
       }
     }
   };
 
   const filteredCouriers = couriers.filter(courier =>
+<<<<<<< HEAD
     courier.displayName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     courier.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
+<<<<<<< HEAD
     return <div className="loading">טוען שליחים...</div>;
   }
 
   if (error) {
     return <div className="alert alert-error">שגיאה: {error}</div>;
+=======
+    return <div>Loading couriers...</div>;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   }
 
   return (
     <div className="courier-management">
+<<<<<<< HEAD
       <h3>ניהול שליחים</h3>
       <div className="controls">
         <input
@@ -191,9 +249,47 @@ function CourierManagement() {
           ))}
         </div>
       )}
+=======
+      <h2>Courier Management</h2>
+      <input
+        type="text"
+        placeholder="Search by email..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+      <table className="courier-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredCouriers.map(courier => (
+            <tr key={courier.id}>
+              <td>{courier.email}</td>
+              <td>{courier.status}</td>
+              <td>
+                {courier.status === 'active' ? (
+                  <button onClick={() => handleSuspend(courier.id)} className="button button-warning">Suspend</button>
+                ) : (
+                  <button onClick={() => handleActivate(courier.id)} className="button button-success">Activate</button>
+                )}
+                <button onClick={() => handleDelete(courier.id)} className="button button-danger">Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     </div>
   );
 }
 
 export default CourierManagement;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

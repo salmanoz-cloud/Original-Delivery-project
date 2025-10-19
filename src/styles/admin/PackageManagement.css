@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Admin Package Management Specific Styles */
 .package-management {
     padding: 20px;
@@ -50,5 +51,62 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.9rem;
+=======
+.package-management {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.package-management h2 {
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.package-management .search-input,
+.package-management .status-filter {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.package-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.package-table th,
+.package-table td {
+  border: 1px solid #eee;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.package-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  color: #555;
+}
+
+.package-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.package-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.package-table select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 

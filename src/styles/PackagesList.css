@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Packages List Specific Styles */
 .packages-list-container {
     /* Inherits card styles from Dashboard.css */
@@ -72,5 +73,50 @@
     margin: 5px 0;
     font-size: 0.9rem;
     color: #555;
+=======
+.packages-list {
+  margin-top: 20px;
+}
+
+.packages-list h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.package-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.package-card h3 {
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.package-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.package-card strong {
+  color: #28a745;
+}
+
+.package-card select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 

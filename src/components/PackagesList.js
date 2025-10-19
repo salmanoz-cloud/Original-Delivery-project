@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { getPackages } from '../services/firestoreService';
 import '../styles/PackagesList.css';
@@ -58,6 +59,36 @@ function PackagesList({ customerId, familyId }) {
               <p><strong>כתובת:</strong> {pkg.receiverAddress}</p>
               <p><strong>תאריך שליחה:</strong> {new Date(pkg.submissionDate.seconds * 1000).toLocaleDateString()}</p>
               {/* Add more package details as needed */}
+=======
+import React from 'react';
+import '../styles/PackagesList.css';
+
+function PackagesList({ packages, onUpdateStatus }) {
+  return (
+    <div className="packages-list">
+      <h2>My Packages</h2>
+      {packages.length === 0 ? (
+        <p>No packages found.</p>
+      ) : (
+        <div className="packages-grid">
+          {packages.map(pkg => (
+            <div key={pkg.id} className="package-card">
+              <h3>{pkg.trackingNumber}</h3>
+              <p>Description: {pkg.description}</p>
+              <p>Status: <strong>{pkg.status}</strong></p>
+              {/* Add more package details as needed */}
+              {onUpdateStatus && (
+                <select
+                  value={pkg.status}
+                  onChange={(e) => onUpdateStatus(pkg.id, e.target.value)}
+                >
+                  <option value="pending">Pending</option>
+                  <option value="in-transit">In Transit</option>
+                  <option value="delivered">Delivered</option>
+                  <option value="exception">Exception</option>
+                </select>
+              )}
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
             </div>
           ))}
         </div>

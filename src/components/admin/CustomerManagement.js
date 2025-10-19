@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { collection, query, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
+=======
+import { getAllUsers, suspendUser, activateUser, deleteUserProfile } from '../../services/firestoreService';
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 import '../../styles/admin/CustomerManagement.css';
 
 function CustomerManagement() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
+<<<<<<< HEAD
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
+=======
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 
   useEffect(() => {
     fetchCustomers();
@@ -16,6 +25,7 @@ function CustomerManagement() {
 
   const fetchCustomers = async () => {
     setLoading(true);
+<<<<<<< HEAD
     setError('');
     try {
       const q = query(collection(db, 'users'), /* Add more sophisticated queries if needed */);
@@ -24,10 +34,19 @@ function CustomerManagement() {
       setCustomers(customerList.filter(user => user.role === 'customer'));
     } catch (err) {
       setError('שגיאה בטעינת לקוחות: ' + err.message);
+=======
+    try {
+      const allUsers = await getAllUsers();
+      const customerUsers = allUsers.filter(user => user.role === 'customer');
+      setCustomers(customerUsers);
+    } catch (err) {
+      setError('Failed to fetch customers: ' + err.message);
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     }
     setLoading(false);
   };
 
+<<<<<<< HEAD
   const handleStatusChange = async (customerId, newStatus) => {
     try {
       await updateDoc(doc(db, 'users', customerId), { status: newStatus });
@@ -44,10 +63,38 @@ function CustomerManagement() {
         fetchCustomers(); // Refresh the list
       } catch (err) {
         setError('שגיאה במחיקת לקוח: ' + err.message);
+=======
+  const handleSuspend = async (customerId) => {
+    try {
+      await suspendUser(customerId);
+      fetchCustomers();
+    } catch (err) {
+      setError('Failed to suspend customer: ' + err.message);
+    }
+  };
+
+  const handleActivate = async (customerId) => {
+    try {
+      await activateUser(customerId);
+      fetchCustomers();
+    } catch (err) {
+      setError('Failed to activate customer: ' + err.message);
+    }
+  };
+
+  const handleDelete = async (customerId) => {
+    if (window.confirm('Are you sure you want to delete this customer?')) {
+      try {
+        await deleteUserProfile(customerId);
+        fetchCustomers();
+      } catch (err) {
+        setError('Failed to delete customer: ' + err.message);
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
       }
     }
   };
 
+<<<<<<< HEAD
   const filteredCustomers = customers.filter(customer => {
     const matchesSearch = customer.displayName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           customer.email.toLowerCase().includes(searchTerm.toLowerCase());
@@ -61,10 +108,23 @@ function CustomerManagement() {
 
   if (error) {
     return <div className="alert alert-error">שגיאה: {error}</div>;
+=======
+  const filteredCustomers = customers.filter(customer =>
+    customer.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (loading) {
+    return <div>Loading customers...</div>;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   }
 
   return (
     <div className="customer-management">
+<<<<<<< HEAD
       <h3>ניהול לקוחות</h3>
       <div className="controls">
         <input
@@ -102,9 +162,47 @@ function CustomerManagement() {
           ))}
         </div>
       )}
+=======
+      <h2>Customer Management</h2>
+      <input
+        type="text"
+        placeholder="Search by email..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+      <table className="customer-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredCustomers.map(customer => (
+            <tr key={customer.id}>
+              <td>{customer.email}</td>
+              <td>{customer.status}</td>
+              <td>
+                {customer.status === 'active' ? (
+                  <button onClick={() => handleSuspend(customer.id)} className="button button-warning">Suspend</button>
+                ) : (
+                  <button onClick={() => handleActivate(customer.id)} className="button button-success">Activate</button>
+                )}
+                <button onClick={() => handleDelete(customer.id)} className="button button-danger">Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     </div>
   );
 }
 
 export default CustomerManagement;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

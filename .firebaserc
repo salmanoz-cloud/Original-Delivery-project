@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "anotherpost-c5075"
+  },
+  "targets": {
+    "anotherpost-c5075": {
+      "hosting": {
+        "customer-app": [
+          "customer-delivery-app-d0fa1"
+        ],
+        "admin-app": [
+          "admin-delivery-app-957ab"
+        ],
+        "courier-app": [
+          "courier-delivery-app-63075"
+        ]
+      }
+    }
+  }
+}
+

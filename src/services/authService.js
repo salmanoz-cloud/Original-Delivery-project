@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail, signOut, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
@@ -24,11 +25,29 @@ export const registerWithEmail = async (email, password, displayName, phoneNumbe
     // For now, we rely on the Firestore document for roles
 
     return { success: true, data: { uid: user.uid, displayName, email, phoneNumber, role } };
+=======
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail, signOut } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebaseConfig";
+
+// Register with email and password
+export const registerWithEmail = async (email, password, role = "customer") => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    await setDoc(doc(db, "users", user.uid), {
+      email: user.email,
+      role: role,
+      createdAt: new Date(),
+    });
+    return { success: true, user };
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   } catch (error) {
     return { success: false, error: error.message };
   }
 };
 
+<<<<<<< HEAD
 // Login with Email and Password
 export const loginWithEmail = async (email, password) => {
   try {
@@ -42,6 +61,13 @@ export const loginWithEmail = async (email, password) => {
     const userData = userDoc.data();
 
     return { success: true, data: { uid: user.uid, ...userData } };
+=======
+// Login with email and password
+export const loginWithEmail = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return { success: true, user: userCredential.user };
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   } catch (error) {
     return { success: false, error: error.message };
   }
@@ -51,6 +77,7 @@ export const loginWithEmail = async (email, password) => {
 export const loginWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
+<<<<<<< HEAD
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
@@ -73,12 +100,32 @@ export const loginWithGoogle = async () => {
     const userData = updatedUserDoc.data();
 
     return { success: true, data: { uid: user.uid, ...userData } };
+=======
+    const userCredential = await signInWithPopup(auth, provider);
+    const user = userCredential.user;
+
+    const userDocRef = doc(db, "users", user.uid);
+    const userDoc = await getDoc(userDocRef);
+
+    if (!userDoc.exists()) {
+      await setDoc(userDocRef, {
+        email: user.email,
+        role: "customer", // Default role for new Google sign-ups
+        createdAt: new Date(),
+      });
+    }
+    return { success: true, user };
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
   } catch (error) {
     return { success: false, error: error.message };
   }
 };
 
+<<<<<<< HEAD
 // Reset Password
+=======
+// Reset password
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 export const resetPassword = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -98,6 +145,7 @@ export const logout = async () => {
   }
 };
 
+<<<<<<< HEAD
 // Get Current User (with role)
 export const getCurrentUser = async () => {
   return new Promise((resolve) => {
@@ -189,3 +237,20 @@ export const activateUser = async (uid) => {
   }
 };
 
+=======
+// Get user role
+export const getUserRole = async (uid) => {
+  try {
+    const userDoc = await getDoc(doc(db, "users", uid));
+    if (userDoc.exists()) {
+      return userDoc.data().role;
+    } else {
+      console.warn("No user document found for uid:", uid);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting user role:", error);
+    return null;
+  }
+};
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

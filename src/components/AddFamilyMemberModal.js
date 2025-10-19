@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { addFamilyMember } from '../services/authService';
 import '../styles/Modal.css';
 
@@ -67,6 +68,35 @@ function AddFamilyMemberModal({ isOpen, onClose, primaryUserId, onMemberAdded })
       setError('שגיאה בהוספת בן משפחה: ' + err.message);
     }
 
+=======
+import { addFamilyMember } from '../services/firestoreService';
+import { useAuth } from '../contexts/AuthContext';
+import '../styles/Modal.css';
+
+function AddFamilyMemberModal({ isOpen, onClose, onFamilyMemberAdded }) {
+  const { user } = useAuth();
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    if (!user) {
+      setError('User not authenticated.');
+      setLoading(false);
+      return;
+    }
+    try {
+      await addFamilyMember(user.uid, { email });
+      onFamilyMemberAdded();
+      onClose();
+      setEmail('');
+    } catch (err) {
+      setError('Failed to add family member: ' + err.message);
+    }
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
     setLoading(false);
   };
 
@@ -75,6 +105,7 @@ function AddFamilyMemberModal({ isOpen, onClose, primaryUserId, onMemberAdded })
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+<<<<<<< HEAD
         <h2>הוסף בן משפחה</h2>
         <button className="modal-close-button" onClick={onClose}>&times;</button>
 
@@ -141,6 +172,26 @@ function AddFamilyMemberModal({ isOpen, onClose, primaryUserId, onMemberAdded })
           <button type="submit" className="button button-primary" disabled={loading}>
             {loading ? 'מוסיף...' : 'הוסף בן משפחה'}
           </button>
+=======
+        <h2>Add Family Member</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <div className="modal-actions">
+            <button type="submit" className="button button-primary" disabled={loading}>{
+              loading ? 'Adding...' : 'Add Member'
+            }</button>
+            <button type="button" className="button button-secondary" onClick={onClose}>Cancel</button>
+          </div>
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
         </form>
       </div>
     </div>

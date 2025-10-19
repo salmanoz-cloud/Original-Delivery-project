@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { db } from "../firebaseConfig";
 import { collection, addDoc, getDoc, getDocs, updateDoc, deleteDoc, doc, query, where, orderBy, limit } from "firebase/firestore";
 
@@ -166,3 +167,164 @@ export const getServicePackages = async () => {
   }
 };
 
+=======
+import { collection, doc, getDoc, getDocs, query, where, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+
+// User Management
+export const createUserProfile = async (uid, email, role) => {
+  await setDoc(doc(db, "users", uid), {
+    email,
+    role,
+    createdAt: new Date(),
+    status: "active",
+  });
+};
+
+export const getUserProfile = async (uid) => {
+  const docRef = doc(db, "users", uid);
+  const docSnap = await getDoc(docRef);
+  return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+};
+
+export const updateUserProfile = async (uid, data) => {
+  const docRef = doc(db, "users", uid);
+  await updateDoc(docRef, data);
+};
+
+export const deleteUserProfile = async (uid) => {
+  const docRef = doc(db, "users", uid);
+  await deleteDoc(docRef);
+};
+
+export const suspendUser = async (uid) => {
+  await updateUserProfile(uid, { status: "suspended" });
+};
+
+export const activateUser = async (uid) => {
+  await updateUserProfile(uid, { status: "active" });
+};
+
+export const getAllUsers = async () => {
+  const q = query(collection(db, "users"));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+
+// Package Management
+export const addPackage = async (packageData) => {
+  const docRef = await addDoc(collection(db, "packages"), {
+    ...packageData,
+    createdAt: new Date(),
+  });
+  return docRef.id;
+};
+
+export const getPackagesByUserId = async (userId) => {
+  const q = query(collection(db, "packages"), where("userId", "==", userId));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+
+export const getPackageById = async (packageId) => {
+  const docRef = doc(db, "packages", packageId);
+  const docSnap = await getDoc(docRef);
+  return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+};
+
+export const updatePackageStatus = async (packageId, status) => {
+  const docRef = doc(db, "packages", packageId);
+  await updateDoc(docRef, { status, updatedAt: new Date() });
+};
+
+export const assignPackageToCourier = async (packageId, courierId) => {
+  const docRef = doc(db, "packages", packageId);
+  await updateDoc(docRef, { assignedCourier: courierId, updatedAt: new Date() });
+};
+
+export const transferPackage = async (packageId, newCourierId) => {
+  const docRef = doc(db, "packages", packageId);
+  await updateDoc(docRef, { assignedCourier: newCourierId, updatedAt: new Date() });
+};
+
+export const getAllPackages = async () => {
+  const q = query(collection(db, "packages"));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+
+// Family Member Management
+export const addFamilyMember = async (mainUserId, familyMemberData) => {
+  const docRef = await addDoc(collection(db, "users"), {
+    ...familyMemberData,
+    mainUserId,
+    role: "customer", // Family members are also customers
+    createdAt: new Date(),
+  });
+  return docRef.id;
+};
+
+export const getFamilyMembers = async (mainUserId) => {
+  const q = query(collection(db, "users"), where("mainUserId", "==", mainUserId));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+
+// Subscription Management
+export const getSubscriptionByUserId = async (userId) => {
+  const q = query(collection(db, "subscriptions"), where("userId", "==", userId));
+  const querySnapshot = await getDocs(q);
+  if (!querySnapshot.empty) {
+    const docSnap = querySnapshot.docs[0];
+    return { id: docSnap.id, ...docSnap.data() };
+  }
+  return null;
+};
+
+export const updateSubscription = async (subscriptionId, data) => {
+  const docRef = doc(db, "subscriptions", subscriptionId);
+  await updateDoc(docRef, data);
+};
+
+export const createSubscription = async (userId, servicePackageId) => {
+  const docRef = await addDoc(collection(db, "subscriptions"), {
+    userId,
+    servicePackageId,
+    startDate: new Date(),
+    endDate: null, // Set based on package duration
+    packagesLeft: 0, // Set based on package details
+    status: "active",
+  });
+  return docRef.id;
+};
+
+// Service Packages (Predefined)
+export const getServicePackages = async () => {
+  const q = query(collection(db, "servicePackages"));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+
+export const getServicePackageById = async (packageId) => {
+  const docRef = doc(db, "servicePackages", packageId);
+  const docSnap = await getDoc(docRef);
+  return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+};
+
+// Courier Stats (Example)
+export const getCourierPerformanceStats = async (courierId) => {
+  // This would typically involve more complex queries and aggregations
+  const q = query(collection(db, "packages"), where("assignedCourier", "==", courierId));
+  const querySnapshot = await getDocs(q);
+  const packages = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+  const deliveredPackages = packages.filter(p => p.status === "delivered").length;
+  const totalPackages = packages.length;
+
+  return {
+    deliveredPackages,
+    totalPackages,
+    deliveryRate: totalPackages > 0 ? (deliveredPackages / totalPackages) * 100 : 0,
+  };
+};
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)

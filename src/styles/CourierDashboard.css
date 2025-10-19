@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Courier Dashboard Specific Styles */
 .courier-dashboard {
   display: flex;
@@ -32,5 +33,53 @@
 /* Performance Stats */
 .performance-stats {
   /* Add specific styles for performance stats if needed */
+=======
+.courier-dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.courier-dashboard h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.courier-dashboard button {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.courier-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.courier-nav button {
+  background-color: #f8f9fa;
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.courier-nav button:hover,
+.courier-nav button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.courier-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+>>>>>>> c87fb12b (Add all generated and modified files to the repository.)
 }
 
