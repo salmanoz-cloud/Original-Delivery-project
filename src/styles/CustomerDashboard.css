@@ -1,0 +1,22 @@
+/* Customer Dashboard Specific Styles */
+.customer-dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.customer-dashboard .dashboard-container {
+  flex-grow: 1;
+}
+
+/* Override default grid for customer dashboard if needed */
+.customer-dashboard .dashboard-grid {
+  grid-template-columns: 2fr 1fr; /* Example: packages list wider than subscription/user info */
+}
+
+@media (max-width: 768px) {
+  .customer-dashboard .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

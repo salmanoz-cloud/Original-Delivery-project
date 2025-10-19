@@ -1,0 +1,65 @@
+/* Courier Task Details Modal Specific Styles */
+.task-details-modal {
+    /* Inherits modal-content styles from Modal.css */
+}
+
+.task-details-modal h2 {
+    /* Inherits h2 styles from Modal.css */
+}
+
+.task-details-info {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.task-details-info p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.task-details-info strong {
+    color: #333;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.task-actions .button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+}
+
+.status-update-form {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.status-update-form .form-group {
+    margin-bottom: 0; /* Override default form-group margin */
+}
+
+.status-update-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.status-update-form .button-primary {
+    width: auto;
+    align-self: flex-end;
+}
+

@@ -1,0 +1,52 @@
+/* Admin Customer Management Specific Styles */
+.customer-management {
+    padding: 20px;
+}
+
+.customer-management .controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.customer-management .controls input,
+.customer-management .controls select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.customer-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.customer-item {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.customer-item p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.customer-item .actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.customer-item .button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+

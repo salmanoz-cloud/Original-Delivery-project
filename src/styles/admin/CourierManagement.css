@@ -1,0 +1,89 @@
+/* Admin Courier Management Specific Styles */
+.courier-management {
+    padding: 20px;
+}
+
+.courier-management .controls {
+    margin-bottom: 20px;
+}
+
+.courier-management .controls input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.add-courier-form {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.add-courier-form h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-courier-form .form-group {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.add-courier-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.add-courier-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-courier-form .button-primary {
+    width: auto;
+    padding: 10px 25px;
+    font-size: 1rem;
+}
+
+.courier-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.courier-item {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.courier-item p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.courier-item .actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.courier-item .button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+

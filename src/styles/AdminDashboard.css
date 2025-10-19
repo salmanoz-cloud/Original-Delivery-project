@@ -1,0 +1,63 @@
+/* Admin Dashboard Specific Styles */
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-dashboard .dashboard-container {
+  flex-grow: 1;
+}
+
+.admin-nav {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.admin-nav .nav-button {
+  padding: 10px 15px;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.admin-nav .nav-button:hover {
+  color: #007bff;
+}
+
+.admin-nav .nav-button.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+  font-weight: bold;
+}
+
+.dashboard-content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-nav .nav-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+

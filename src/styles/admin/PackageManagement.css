@@ -1,0 +1,54 @@
+/* Admin Package Management Specific Styles */
+.package-management {
+    padding: 20px;
+}
+
+.package-management .controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.package-management .controls input,
+.package-management .controls select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.package-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.package-item {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.package-item p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.package-item .actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.package-item .actions select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
